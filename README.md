@@ -6,7 +6,7 @@ Python project for the course Advanced Programming with Python
 
 Name                 |    ID    |       
 -------------------- |----------|
-Hồ Quang ANh         | BI12-017 | 
+Hồ Quang Anh         | BI12-017 | 
 Trần Đức Anh         | BI12-018 | 
 Phùng Đàm Quân       | BI12-364 | 
 Nguyễn Trọng Nhân    | BI12-335 | 
