@@ -5,7 +5,7 @@ from .Button import Button
 
 class Navbar(Frame):
     """Represent a Navbar"""
-    def __init__(self, master, background, links : list[tuple[str, str]], text_color: str = "black", redirect_funtion = lambda:1):
+    def __init__(self, master, background, links : list[tuple[str, str]], text_color="black", redirect_funtion=lambda:1):
         """Init the Nabar
         
         Parameters
@@ -16,7 +16,7 @@ class Navbar(Frame):
         text_color : default black,
         redirect_funtion : funtion to change screen
         """
-        super().__init__(master, width = 400, height = 400, background = background)
+        super().__init__(master, width=400, height=400, background=background)
         self.text_color = text_color
         self.background = background
         self.links = links
@@ -40,13 +40,13 @@ class Navbar(Frame):
             redirect = get_redirect_fun(screen_name)
             link_widget = Button(
                 self, 
-                command = redirect,
-                text = text, 
-                background = self.background, 
-                foreground = self.text_color,
-                activebackground = self.text_color,
-                activeforeground = self.background,
-                borderwidth = 0
+                command=redirect,
+                text=text, 
+                background=self.background, 
+                foreground=self.text_color,
+                activebackground= self.text_color,
+                activeforeground=self.background,
+                borderwidth=0
             )
-            link_widget.grid(row = i+1, column = 0, sticky = tk.EW, padx = 10, pady = 3)
+            link_widget.grid(row=i+1, column=0, sticky=tk.EW, padx=10, pady=3)
             self.link_widgets.append(link_widget)

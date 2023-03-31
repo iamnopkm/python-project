@@ -1,4 +1,3 @@
-import mysql.connector
 from datetime import datetime
 
 class Product:
@@ -46,14 +45,15 @@ class Product:
     def setPprice(self, price: float):
         self.__p_price = price
         
-    def displayProduct(self):
-        print("| {:^15} | {:^15} | {:^15} | {:^5}".format("Name", "Type", "Price", "Date and Time"))
-        print("| {:^15} | {:^15} | {:^15} | {:^5}".format(self.__p_name, self.__p_type, self.__p_price, self.now.strftime("%d/%m/%Y %H:%M:%S")))
+    # def displayProduct(self):
+    #     print("| {:^15} | {:^15} | {:^15} | {:^5}".format("Name", "Type", "Price", "Date and Time"))
+    #     print("| {:^15} | {:^15} | {:^15} | {:^5}".format(self.__p_name, self.__p_type, self.__p_price, self.now.strftime("%d/%m/%Y %H:%M:%S")))
     
+    def __str__(self):
+        return f"Product: {self.__p_name} | {self.__p_type} | {self.__p_amount} | {self.__p_status} | {self.__p_price}" 
     
-# test    
-john = Product("Iphone 11", "Mobile Phone", 11000)
-john._Product__p_name   
-john.displayProduct() 
-      
+    def writeDataToFile(self, file):
+        need_data = f"{self.__p_name}, {self.__p_type}, {self.__p_amount}, {self.__p_status}, {self.__p_price}"
+        file.write(need_data)
+
     

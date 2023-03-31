@@ -39,13 +39,19 @@ class Customer:
     def setCemail(self, email: str):
         self.__c_email = email
         
-    def displayProduct(self):
-        print("| {:^15} | {:^15} | {:^15} | {:^15} | {:^5}".format("Name", "DoB", "Phone number", "Email", "Date and Time"))
-        print("| {:^15} | {:^15} | {:^15} | {:^15} | {:^5}".format(self.__c_name, self.__c_dob, self.__c_phone_number, self.__c_email, self.now.strftime("%d/%m/%Y %H:%M:%S")))
+    def takeData(self, data):
+        self.__c_name = data["Name"]
+        self.__c_dob = data["Dob"]
+        self.__c_phone_number = data["Phone number"]
+        self.__c_email = data["Email"]
+   
+    # def displayProduct(self):
+    #     print("| {:^15} | {:^15} | {:^15} | {:^15} | {:^5}".format("Name", "DoB", "Phone number", "Email", "Date and Time"))
+    #     print("| {:^15} | {:^15} | {:^15} | {:^15} | {:^5}".format(self.__c_name, self.__c_dob, self.__c_phone_number, self.__c_email, self.now.strftime("%d/%m/%Y %H:%M:%S")))
+   
+    def __str__(self):
+        return f"Customer: {self.__c_name} | {self.__c_dob} | {self.__c_phone_number} | {self.__c_email}" 
     
-
-# test    
-john = Customer("Jhony nguye", "12-09-2003", "0998832213", "test@gmail.com")
-john.displayProduct()
-
-    
+    def writeDataToFile(self, file):
+        need_data = f"{self.__c_name}, {self.__c_dob}, {self.__c_phone_number}, {self.__c_email}"
+        file.write(need_data)

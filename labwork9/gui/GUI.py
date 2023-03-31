@@ -5,9 +5,17 @@ from .Screen import Screen
 from .Navbar import Navbar
 from .Label import Label
 class GUI(tk.Tk):
-    def __init__(self, title, geometry: str = "800x600", 
-                 resizable = (True, True), fullscreen: bool = False, min_size = (0,0), 
-                 icon = None, fonts = {}, on_close = None):
+    """GUI app class"""
+    def __init__(self, 
+            title, 
+            geometry="800x600", 
+            resizable=(True, True),
+            fullscreen=False,
+            min_size=(0,0), 
+            icon=None,
+            fonts = {},
+            on_close=None
+        ):
         """Init gui
         
         Parameters
@@ -25,7 +33,7 @@ class GUI(tk.Tk):
         self.title(title)
 
         if fullscreen:
-            self.state("Zoomed")
+            self.state("zoomed")
             self.resizable(True, True)
         else:
             self.geometry(geometry)
@@ -33,7 +41,7 @@ class GUI(tk.Tk):
             self.minsize(min_size[0], min_size[0])
 
         if os.path.isfile(icon):
-            self.iconphoto(True, tk.PhotoImage(file = icon))
+            self.iconphoto(True, tk.PhotoImage(file=icon))
         
         if on_close != None:
              self.protocol("WM_DELETE_WINDOW", lambda: self.on_exit(on_close))
@@ -43,14 +51,14 @@ class GUI(tk.Tk):
         self.grid_columnconfigure(1, weight=20)
         self.screens: dict[str, Screen] = {}
         self.current_screen: str = None
-    def on_exit(self, func):
+    def on_exit(self, fun):
         """On close window
         
         Parameter
         ---------
         Fun : function to run when close
         """
-        func()
+        fun()
         self.destroy()
 
     def init_navbar(self, navbar: Navbar):

@@ -4,7 +4,7 @@ from .Frame import Frame
 
 class Screen(Frame):
     """Represent a screen in the gui"""
-    def __init__(self, master, background: str = "#ffffff"):
+    def __init__(self, master, background="#ffffff"):
         """Init the screen
         
         Parameters
@@ -12,7 +12,7 @@ class Screen(Frame):
         master : master widget
         background : background color
         """
-        super().__init__(master, width = 400, height = 400, background = background)
+        super().__init__(master, width=400, height=400, background=background)
         self.grid_propagate(False)
         self.pack_propagate(False)
     
