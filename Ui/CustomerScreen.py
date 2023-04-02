@@ -4,19 +4,19 @@ from tkinter import PhotoImage, ttk, Toplevel, Entry, messagebox
 class CustomerScreen(Screen):
     def __init__(self, master, shopController):
         """Init screen"""
-        super().__init__(master, BasicColors.WHITE)
+        super().__init__(master, BasicColors.PEACH)
 
         self.logo_image = PhotoImage(file="./Image/mobile_store.png")
-        self.image_label = Label(self, image=self.logo_image, background=BasicColors.WHITE)
+        self.image_label = Label(self, image=self.logo_image, background=BasicColors.PEACH)
         self.image_label.pack()
-        self.app_name = Label(self, "Customer", background=BasicColors.WHITE)
+        self.app_name = Label(self, "Customer", background=BasicColors.PEACH)
         self.app_name.pack()
         self.shopController = shopController
         self.createCustomerTable()
         
     def createCustomerTable(self):
         """Create the customer table view"""
-        self.customer_table_frame = Frame(self, width=1000, height=1000, background=BasicColors.WHITE)
+        self.customer_table_frame = Frame(self, width=1000, height=1000, background=BasicColors.PEACH)
         self.customer_table_frame.pack()
         self.customer_table_frame.pack_propagate(False)
         self.customer_table = ttk.Treeview(self.customer_table_frame)
@@ -42,31 +42,31 @@ class CustomerScreen(Screen):
         
         self.add_button = Button(self,
             self.addCustomerPopup,
-            "ADD +", 
+            "Add", 
             width=10,
             height=2,
-            background="black",
-            foreground="white",
+            background="teal",
+            foreground="navy",
             activebackground="black",
             activeforeground="white"
         )
         self.remove_button = Button(self,
             self.deleteCustomer,
-            "REMOVE x", 
+            "Remove", 
             width=10,
             height=2,
-            background="black",
-            foreground="white",
+            background="teal",
+            foreground="navy",
             activebackground="black",
             activeforeground="white"
         )
         self.save_button = Button(self,
             self.save,
-            "SAVE CHANGES", 
+            "Save change", 
             width=10,
             height=2,
-            background="black",
-            foreground="white",
+            background="teal",
+            foreground="navy",
             activebackground="black",
             activeforeground="white"
         )
