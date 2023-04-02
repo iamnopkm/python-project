@@ -62,7 +62,7 @@ class ProductScreen(Screen):
         )
         self.save_button = Button(self,
             self.save,
-            "Save change", 
+            "Save", 
             width=10,
             height=2,
             background="teal",

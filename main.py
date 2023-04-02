@@ -18,7 +18,7 @@ class ManagementApp(GUI):
             [
                 ("home", "Home"), 
                 ("product", "Product"),
-                ("ustomer", "Customer")
+                ("customer", "Customer")
             ],
             self.change_screen
         ))

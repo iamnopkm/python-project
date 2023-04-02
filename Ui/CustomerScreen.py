@@ -16,7 +16,7 @@ class CustomerScreen(Screen):
         
     def createCustomerTable(self):
         """Create the customer table view"""
-        self.customer_table_frame = Frame(self, width=1000, height=1000, background=BasicColors.PEACH)
+        self.customer_table_frame = Frame(self, width=800, height=200, background=BasicColors.PEACH)
         self.customer_table_frame.pack()
         self.customer_table_frame.pack_propagate(False)
         self.customer_table = ttk.Treeview(self.customer_table_frame)
@@ -62,7 +62,7 @@ class CustomerScreen(Screen):
         )
         self.save_button = Button(self,
             self.save,
-            "Save change", 
+            "Save", 
             width=10,
             height=2,
             background="teal",
