@@ -10,7 +10,7 @@ class Customer:
         self.now = datetime.now()
     
         
-    def takeCustomerInfo(self, info):
+    def takeCustomerInfo(self, info = {}):
         self.c_id = info["id"]
         self.c_name = info["name"]
         self.c_dob = info["dob"]
