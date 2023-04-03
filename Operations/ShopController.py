@@ -39,9 +39,9 @@ class ShopController:
                 try:
                     # Open customers file
                     with open("./data/customers.txt", "rb") as customers_file:
-                        self.courses = pickle.load(customers_file)
+                        self.customers = pickle.load(customers_file)
                 except Exception:
-                    # Init customers list to empty if no courses file does not exist
+                    # Init customers list to empty if no customers file does not exist
                     self.customers = []
 
             else:
@@ -111,7 +111,7 @@ class ShopController:
 
     def checkUniqueCustomer(self, id):
         """Check if a customer is unique base on their id"""
-        for customer in self.courses:
+        for customer in self.customers:
             if customer.c_id == id:
                 return 0
         return 1
