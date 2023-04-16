@@ -48,7 +48,9 @@ class CustomerScreen(Screen):
             background="teal",
             foreground="navy",
             activebackground="black",
-            activeforeground="white"
+            activeforeground="white",
+            padx=10,
+            pady=10
         )
         self.remove_button = Button(self,
             self.deleteCustomer,
@@ -58,7 +60,9 @@ class CustomerScreen(Screen):
             background="teal",
             foreground="navy",
             activebackground="black",
-            activeforeground="white"
+            activeforeground="white",
+            padx=10,
+            pady=10
         )
         self.save_button = Button(self,
             self.save,
@@ -68,7 +72,9 @@ class CustomerScreen(Screen):
             background="teal",
             foreground="navy",
             activebackground="black",
-            activeforeground="white"
+            activeforeground="white",
+            padx=10,
+            pady=10
         )
         self.add_button.pack()
         self.remove_button.pack(pady=5)

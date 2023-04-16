@@ -9,7 +9,7 @@ class ManagementApp(GUI):
         super().__init__(
             "mobile shop management system",
             resizable=(True, True), 
-            geometry="1200x900",
+            geometry="900x750",
             icon="./Image/mobile_store.png",
             on_close=self.shopController.quit
         )
