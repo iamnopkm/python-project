@@ -9,7 +9,7 @@ from OperationUI.Colors import *
 
 
 if __name__ == "__main__":
-# Create the main window
+# Create the main window:
     root.geometry("1440x826")
     app_label = Label(root, text= "Mobile phone shop management app", background="#FFCAD4", font=("Comic Sans MS", 26, "bold"))
     app_label.grid(row=0, column=1, padx=10, pady=20)
@@ -139,8 +139,8 @@ if __name__ == "__main__":
     exit_button.grid(row=10, column=1,columnspan=1, pady=10)
 
 
-    # Run the main loop
+    # Run the main loop:
     root.mainloop()
 
-    # Close the database connection when the program is done
+    # Close the database connection when the program is done:
     conn.close()
