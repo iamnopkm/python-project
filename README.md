@@ -2,7 +2,7 @@
 
 Python project for the course Advanced Programming with Python
 
-(*) Group members
+(*) Group members:
 
 Name                 |    ID    |       
 -------------------- |----------|

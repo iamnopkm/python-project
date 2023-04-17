@@ -9,7 +9,7 @@ from Domains.Product import Product
 
 
 root = tk.Tk()
-root.title("Phone Store Management")
+root.title("Mobile Phone Store Management")
 
 conn = sqlite3.connect('./data/phone_store.db')
 c = conn.cursor()
@@ -62,7 +62,7 @@ class ProductOperation:
             try:
                 price = float(price_entry.get())
                 if price <= 0:
-                    raise messagebox.showerror("Add Error", "Price must be a positive number.")
+                    raise messagebox.showerror("Add Error", "The price entered must be a positive number.")
             except ValueError:
                 messagebox.showerror("Add Error", "Invalid price entered.")
                 return
