@@ -103,9 +103,7 @@ class ProductOperation:
         cancel_button.grid(row=4, column=0,columnspan=1, padx=50, pady=10)
         
 
-    # Add the validation functions to the input fields
-
-
+    # Add the validation functions to the input fields:
     def list_phones():
         # Create a new window for the table
         table_window = tk.Toplevel(root)
