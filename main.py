@@ -11,16 +11,18 @@ from OperationUI.Colors import *
 if __name__ == "__main__":
 # Create the main window
     root.geometry("1440x826")
-    app_label = Label(root, text= "Mobile phone shop management app", background=None, font=("Comic Sans MS", 26, "bold"))
-    app_label.grid(row=1, column=1, padx=10, pady=10)
+    app_label = Label(root, text= "Mobile phone shop management app", background="#FFCAD4", font=("Comic Sans MS", 26, "bold"))
+    app_label.grid(row=1, column=1, padx=10, pady=20)
     root.config(background="#FFCAD4")
     root.grid_columnconfigure((0,2), weight=1)
+    # root.grid_rowconfigure((0, 11), weight=1)
+    
     image = Image.open("./Image/mobile_store.png")
-    image.geometry = "900x750"
+    image.geometry = "800x750"
     image_logo = ImageTk.PhotoImage(image)
     image_label = tk.Label(image=image_logo, background="#FFCAD4")
     # label1.image = image_logo
-    image_label.place(x=400,y=100)
+    image_label.place(x=400,y=150)
     
    
     """Product buttons"""
@@ -135,7 +137,7 @@ if __name__ == "__main__":
         fg = "white", 
         borderwidth = 3, 
         font = ("VNI-Vari", 12, "bold"))
-    exit_button.grid(row=9, column=1,columnspan=1, pady=10)
+    exit_button.grid(row=10, column=1,columnspan=1, pady=10)
 
 
     # Run the main loop
