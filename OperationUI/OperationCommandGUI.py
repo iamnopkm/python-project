@@ -80,14 +80,26 @@ class ProductOperation:
             messagebox.showinfo("Success", f"Your {brand} {model} has been added successfully!")
             conn.commit()
             add_phone_window.destroy()
-        
 
-        add_button = Button(add_phone_window, text="Add", command=add_phone,borderwidth=3, bg="#F4ACB7", fg="white", font=("VNI-Vari", 12, "bold"))
+        add_button = Button(add_phone_window, 
+                            text = "Add", 
+                            command = add_phone,
+                            borderwidth = 3, 
+                            bg = "#F4ACB7", fg = "white", 
+                            font = ("VNI-Vari", 12, "bold"))
         add_button.grid(row=4, column=1,columnspan=2, pady=10)
         
         def cancel_add():
             add_phone_window.destroy()
-        cancel_button = Button(add_phone_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
+            
+        cancel_button = Button(
+            add_phone_window, 
+            text = "Cancel", 
+            command = cancel_add,
+            borderwidth = 3, 
+            bg = "#D00050", 
+            fg = "white", 
+            font = ("VNI-Vari", 12, "bold"))
         cancel_button.grid(row=4, column=0,columnspan=1, padx=50, pady=10)
         
 
@@ -143,13 +155,29 @@ class ProductOperation:
         brand_entry.grid(row=1, column=1, padx=10, pady=10)
 
         # Define a style for the search button
-        search_button = Button(search_window, text="Search", command=lambda: perform_search(model_entry.get(), brand_entry.get()), borderwidth=3, bg="#F4ACB7", fg="white", font=("VNI-Vari", 12, "bold"))
+        search_button = Button(
+            search_window, 
+            text = "Search", 
+            command = lambda: perform_search(model_entry.get(), brand_entry.get()), 
+            borderwidth = 3, 
+            bg = "#F4ACB7", 
+            fg = "white", 
+            font=("VNI-Vari", 12, "bold"))
         search_button.grid(row=3, column=1,columnspan=2, pady=10)
         
         def cancel_add():
             search_window.destroy()
-        cancel_button = Button(search_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
+            
+        cancel_button = Button(
+            search_window, 
+            text = "Cancel", 
+            command = cancel_add,
+            borderwidth = 3, 
+            bg = "#D00050", 
+            fg = "white", 
+            font=("VNI-Vari", 12, "bold"))
         cancel_button.grid(row=3, column=0,columnspan=1, padx=50, pady=10)
+        
         def search_table(self):
             # Create a new window to display search results
             search_window.destroy()
@@ -177,6 +205,7 @@ class ProductOperation:
                     search_list.insert("", "end", values=result)
             # Add the widgets to the search results window
             search_list.pack(padx=5, pady=5)
+            
         def perform_search(model, brand):
             if not brand and model:
                 search_results = list(c.execute("SELECT * FROM phones WHERE model=?", (model,)))
@@ -216,12 +245,27 @@ class ProductOperation:
         brand_label.grid(row=1, column=0, padx=10, pady=10)
         brand_entry.grid(row=1, column=1, padx=10, pady=10)
 
-        remove_button = Button(remove_window, text="Remove", command=lambda: perform_remove(model_entry.get(), brand_entry.get()), borderwidth=3, bg="#F4ACB7", fg="white", font=("VNI-Vari", 12, "bold"))
+        remove_button = Button(
+            remove_window, 
+            text = "Remove", 
+            command = lambda: perform_remove(model_entry.get(), brand_entry.get()), 
+            borderwidth = 3, 
+            bg = "#F4ACB7", 
+            fg = "white", 
+            font = ("VNI-Vari", 12, "bold"))
         remove_button.grid(row=3, column=1,columnspan=2, pady=10)
         
         def cancel_add():
             remove_window.destroy()
-        cancel_button = Button(remove_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
+            
+        cancel_button = Button(
+            remove_window, 
+            text = "Cancel", 
+            command = cancel_add,
+            borderwidth = 3, 
+            bg = "#D00050", 
+            fg = "white", 
+            font = ("VNI-Vari", 12, "bold"))
         cancel_button.grid(row=3, column=0,columnspan=1, padx=50, pady=10)
         # Create a custom style for the remove button
 
@@ -248,6 +292,7 @@ class ProductOperation:
                 messagebox.showinfo("Success", f"Your {model} {brand} has been removed!")
             else:
                 messagebox.showerror("Remove Error", f"No results found for {model} {brand}.")
+    
     def restock_phone():
         # Create a new window for the restock dialog
         restock_window = tk.Toplevel(root)
@@ -275,7 +320,15 @@ class ProductOperation:
         
         def cancel_add():
             restock_window.destroy()
-        cancel_button = Button(restock_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
+            
+        cancel_button = Button(
+            restock_window, 
+            text = "Cancel", 
+            command = cancel_add,
+            borderwidth = 3, 
+            bg = "#D00050", 
+            fg = "white", 
+            font=("VNI-Vari", 12, "bold"))
         cancel_button.grid(row=3, column=0,columnspan=1, padx=50, pady=10)
 
         def perform_restock(model, brand, quantity):
@@ -397,11 +450,28 @@ class CustomerOperation:
                 add_customer_window.destroy()
             else:
                 messagebox.showerror("Search Results", f"No results found for {phone_brand_information} {phone_model_information}.")
-        add_button = Button(add_customer_window, text="Add", command=perform_add_customer,borderwidth=3, bg="#F4ACB7", fg="white", font=("VNI-Vari", 12, "bold"))
+        
+        add_button = Button(
+            add_customer_window, 
+            text = "Add", 
+            command = perform_add_customer,
+            borderwidth = 3, 
+            bg = "#F4ACB7", 
+            fg = "white", 
+            font = ("VNI-Vari", 12, "bold"))
         add_button.grid(row=5, column=1,columnspan=2, pady=10)
+        
         def cancel_add():
             add_customer_window.destroy()
-        cancel_button = Button(add_customer_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
+    
+        cancel_button = Button(
+            add_customer_window, 
+            text = "Cancel", 
+            command = cancel_add,
+            borderwidth = 3, 
+            bg = "#D00050", 
+            fg = "white", 
+            font=("VNI-Vari", 12, "bold"))
         cancel_button.grid(row=5, column=0,columnspan=1, pady=10)
         
     def edit_customer():
@@ -422,9 +492,18 @@ class CustomerOperation:
         
         edit_button = Button(edit_customer_window, text="Edit", command=lambda: perform_customer_edit(name_entry.get(), customer_id_entry.get()), borderwidth=3, bg="#F4ACB7", fg="white", font=("VNI-Vari", 12, "bold"))
         edit_button.grid(row=3, column=1,columnspan=2, pady=10)
+        
         def cancel_add():
             edit_customer_window.destroy()
-        cancel_button = Button(edit_customer_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
+        
+        cancel_button = Button(
+            edit_customer_window, 
+            text = "Cancel", 
+            command = cancel_add,
+            borderwidth = 3, 
+            bg = "#D00050", 
+            fg = "white", 
+            font=("VNI-Vari", 12, "bold"))
         cancel_button.grid(row=3, column=0,columnspan=1, padx=50, pady=10)
         
         def perform_customer_edit(name,customer_id):
@@ -472,6 +551,7 @@ class CustomerOperation:
                             messagebox.showinfo("Success", f"You have change {name} into {new_name}!")
                             conn.commit()
                             edit_name_window.destroy()
+                
                 def perform_edit_id():
                     edit_id_window = tk.Toplevel(root)
                     edit_id_window.title("Edit ID")
@@ -484,9 +564,18 @@ class CustomerOperation:
                     
                     edit_id = Button(edit_id_window, text="Confirm", command=lambda: update_id(new_id_entry.get()), bg="#F4ACB7", borderwidth=3, fg="white", font=("VNI-Vari", 12, "bold"))
                     edit_id.grid(row=1, column=1, columnspan=2, pady=10)
+                    
                     def cancel_add():
                         edit_id_window.destroy()
-                    cancel_button = Button(edit_id_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
+                    
+                    cancel_button = Button(
+                        edit_id_window, 
+                        text = "Cancel", 
+                        command = cancel_add,
+                        borderwidth = 3, 
+                        bg = "#D00050", 
+                        fg = "white", 
+                        font=("VNI-Vari", 12, "bold"))
                     cancel_button.grid(row=1, column=0,columnspan=1, padx=50, pady=10)
                     
                     def update_id(new_id):
@@ -504,6 +593,7 @@ class CustomerOperation:
                             messagebox.showinfo("Success", f"You have change ID {customer_id} into {new_id}!")
                             conn.commit()
                             edit_id_window.destroy()
+                
                 def perform_edit_phonenum():
                     edit_phone_num_window = tk.Toplevel(root)
                     edit_phone_num_window.title("Edit Phone Number")
@@ -516,9 +606,18 @@ class CustomerOperation:
                     
                     edit_phone_num = Button(edit_phone_num_window, text="Confirm", command=lambda: update_phone_num(new_phone_num_entry.get()), bg="#F4ACB7", borderwidth=3, fg="white", font=("VNI-Vari", 12, "bold"))
                     edit_phone_num.grid(row=1, column=1, columnspan=2, pady=10)
+                    
                     def cancel_add():
                         edit_phone_num_window.destroy()
-                    cancel_button = Button(edit_phone_num_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
+                    
+                    cancel_button = Button(
+                        edit_phone_num_window, 
+                        text = "Cancel", 
+                        command = cancel_add,
+                        borderwidth = 3, 
+                        bg = "#D00050", 
+                        fg = "white", 
+                        font = ("VNI-Vari", 12, "bold"))
                     cancel_button.grid(row=1, column=0,columnspan=1, padx=50, pady=10)
                     
                     def update_phone_num(new_phone_num):
@@ -538,6 +637,7 @@ class CustomerOperation:
                             messagebox.showinfo("Success", f"You have change {name}'s number into {new_phone_num}!")
                             conn.commit()
                             edit_phone_num_window.destroy()
+                
                 def perform_edit_model_brand():
                     edit_model_and_brand_window = tk.Toplevel(root)
                     edit_model_and_brand_window.title("Edit Model And Brand")
@@ -555,9 +655,18 @@ class CustomerOperation:
                     
                     edit_model_brand = Button(edit_model_and_brand_window, text="Confirm", command=lambda: update_model_brand(model_entry.get(),brand_entry.get()), bg="#F4ACB7", borderwidth=3, fg="white", font=("VNI-Vari", 12, "bold"))
                     edit_model_brand.grid(row=2, column=1,columnspan=2, pady=10)
+                    
                     def cancel_add():
                         edit_model_and_brand_window.destroy()
-                    cancel_button = Button(edit_model_and_brand_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
+                    
+                    cancel_button = Button(
+                        edit_model_and_brand_window, 
+                        text = "Cancel", 
+                        command = cancel_add,
+                        borderwidth = 3, 
+                        bg = "#D00050", 
+                        fg = "white", 
+                        font = ("VNI-Vari", 12, "bold"))
                     cancel_button.grid(row=2, column=0,columnspan=1, padx=50, pady=10)
                     
                     def update_model_brand(new_model,new_brand):
@@ -589,15 +698,53 @@ class CustomerOperation:
                 edit_options_window.configure(bg="#FFCAD4")
                 edit_options_window.grid_columnconfigure((0,1), weight=1)
 
-                edit_name = Button(edit_options_window, text="Edit Name", command=perform_edit_name, bg="#9D8189", borderwidth=3, fg="white", font=("VNI-Vari", 12, "bold"))
+                edit_name = Button(
+                    edit_options_window, 
+                    text = "Edit Name", 
+                    command = perform_edit_name, 
+                    bg = "#9D8189", 
+                    borderwidth = 3, 
+                    fg = "white", 
+                    font = ("VNI-Vari", 12, "bold"))
                 edit_name.grid(row=1, column=0, pady=10,sticky="ew")
-                edit_id = Button(edit_options_window, text="Edit ID", command=perform_edit_id, bg="#9D8189", borderwidth=3, fg="white", font=("VNI-Vari", 12, "bold"))
+                
+                edit_id = Button(
+                    edit_options_window, 
+                    text = "Edit ID", 
+                    command = perform_edit_id, 
+                    bg = "#9D8189", 
+                    borderwidth = 3, 
+                    fg = "white", 
+                    font = ("VNI-Vari", 12, "bold"))
                 edit_id.grid(row=2, column=1, pady=10,sticky="ew")
-                edit_phonenumber = Button(edit_options_window, text="Edit Phone Number", command=perform_edit_phonenum, bg="#9D8189", borderwidth=3, fg="white", font=("VNI-Vari", 12, "bold"))
+                
+                edit_phonenumber = Button(
+                    edit_options_window, 
+                    text = "Edit Phone Number", 
+                    command = perform_edit_phonenum, 
+                    bg = "#9D8189", 
+                    borderwidth = 3, 
+                    fg = "white", font = ("VNI-Vari", 12, "bold"))
                 edit_phonenumber.grid(row=2, column=0, pady=10, sticky="ew")
-                edit_model = Button(edit_options_window, text="Edit Phone Sold Model And Brand", command=perform_edit_model_brand, bg="#9D8189", borderwidth=3, fg="white", font=("VNI-Vari", 12, "bold"))
+                
+                edit_model = Button(
+                    edit_options_window, 
+                    text = "Edit Phone Sold Model And Brand", 
+                    command = perform_edit_model_brand, 
+                    bg = "#9D8189", 
+                    borderwidth=3, 
+                    fg = "white", 
+                    font = ("VNI-Vari", 12, "bold"))
                 edit_model.grid(row=1, column=1, pady=10, sticky = "ew")
-                cancel_button = Button(edit_options_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
+                
+                cancel_button = Button(
+                    edit_options_window, 
+                    text = "Cancel", 
+                    command = cancel_add,
+                    borderwidth = 3, 
+                    bg = "#D00050", 
+                    fg = "white", 
+                    font = ("VNI-Vari", 12, "bold"))
                 cancel_button.grid(row=3, column=0,columnspan=2, pady=10)
             else:
                 messagebox.showerror("Edit Error",f"No one have ID {customer_id} and Name {name}")
@@ -619,12 +766,27 @@ class CustomerOperation:
         customer_id_label.grid(row=1, column=0, padx=10, pady=10)
         customer_id_entry.grid(row=1, column=1, padx=10, pady=10)
 
-        remove_button = Button(remove_customer_window, text="Remove", command=lambda: perform_customer_remove(name_entry.get(), customer_id_entry.get()), borderwidth=3, bg="#F4ACB7", fg="white", font=("VNI-Vari", 12, "bold"))
+        remove_button = Button(
+            remove_customer_window, 
+            text = "Remove", 
+            command = lambda: perform_customer_remove(name_entry.get(), customer_id_entry.get()), 
+            borderwidth = 3, 
+            bg = "#F4ACB7", 
+            fg = "white", 
+            font = ("VNI-Vari", 12, "bold"))
         remove_button.grid(row=3, column=1,columnspan=2, pady=10)
         
         def cancel_add():
             remove_customer_window.destroy()
-        cancel_button = Button(remove_customer_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
+        
+        cancel_button = Button(
+            remove_customer_window, 
+            text = "Cancel", 
+            command = cancel_add,
+            borderwidth = 3, 
+            bg = "#D00050", 
+            fg = "white", 
+            font = ("VNI-Vari", 12, "bold"))
         cancel_button.grid(row=3, column=0,columnspan=1, padx=50, pady=10)
 
         def perform_customer_remove(name, customer_id):
@@ -697,6 +859,7 @@ class CustomerOperation:
             search_customer_window.destroy()
         cancel_button = Button(search_customer_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
         cancel_button.grid(row=3, column=0,columnspan=1, padx=50, pady=10)
+        
         def search_table(self):
                     search_customer_window.destroy()
                     # Create a new window to display search results
@@ -716,6 +879,7 @@ class CustomerOperation:
                     for result in self:
                         results_list.insert("", "end", values=result)
                     results_list.pack(padx=5, pady=5)
+        
         def perform_search_customer(name, customer_id):
             # Perform the search with the given name and customer_id
             if not customer_id and name:
