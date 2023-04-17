@@ -697,7 +697,7 @@ class CustomerOperation:
                 edit_options_window.title("Edit Options")
                 edit_options_window.configure(bg="#FFCAD4")
                 edit_options_window.grid_columnconfigure((0,2), weight=1)
-                edit_options_window.grid_rowconfigure((0, 11), weight=1)
+                # edit_options_window.grid_rowconfigure((0, 11), weight=1)
 
                 edit_name = Button(
                     edit_options_window, 
