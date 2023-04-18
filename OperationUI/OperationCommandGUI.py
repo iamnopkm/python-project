@@ -9,12 +9,14 @@ from Domains.Product import Product
 
 
 root = tk.Tk()
-root.title("Mobile Phone Store Management")
+root.title("Phone Store Management")
 
-conn = sqlite3.connect('./data/phone_store.db')
-c = conn.cursor()
+conn = sqlite3.connect('./data/phone_store.db') # Để kết nối đến CSDL thì chúng ta dùng phương thức connect(), phương thức này trả về một đối tượng Connection
+c = conn.cursor() # Sau khi đã có đối tượng Connection, chúng ta lấy một đối tượng Cursor, 
+                  # đối tượng này làm nhiệm vụ duyệt qua các bản ghi trong tập dữ liệu được lấy về và thực thi các câu truy vấn
 
 # Create the table if it doesn't exist
+# Để thực thi một câu truy vấn thì chúng ta dùng phương thức execute().
 c.execute('''CREATE TABLE IF NOT EXISTS phones
             (model text, brand text, price real, stock integer)''')
 c.execute('''CREATE TABLE IF NOT EXISTS customers
@@ -62,7 +64,7 @@ class ProductOperation:
             try:
                 price = float(price_entry.get())
                 if price <= 0:
-                    raise messagebox.showerror("Add Error", "The price entered must be a positive number.")
+                    raise messagebox.showerror("Add Error", "Price must be a positive number.")
             except ValueError:
                 messagebox.showerror("Add Error", "Invalid price entered.")
                 return
@@ -103,7 +105,9 @@ class ProductOperation:
         cancel_button.grid(row=4, column=0,columnspan=1, padx=50, pady=10)
         
 
-    # Add the validation functions to the input fields:
+    # Add the validation functions to the input fields
+
+
     def list_phones():
         # Create a new window for the table
         table_window = tk.Toplevel(root)
@@ -116,6 +120,8 @@ class ProductOperation:
 
         # Create a new Treeview widget in the new window with the custom style
         phones_list = ttk.Treeview(table_window, style="Custom.Treeview", columns=("model", "brand", "price", "stock"))
+        phones_list.column("#0", width = 0, stretch=NO)
+        phones_list.heading("#0", text='', anchor=W)
         phones_list.heading("model", text="Model")
         phones_list.heading("brand", text="Brand")
         phones_list.heading("price", text="Price")
@@ -532,6 +538,7 @@ class CustomerOperation:
                     
                     edit_name = Button(edit_name_window, text="Confirm", command=lambda: update_name(new_name_entry.get()), bg="#F4ACB7", borderwidth=3, fg="white", font=("VNI-Vari", 12, "bold"))
                     edit_name.grid(row=1, column=1, columnspan=2, pady=10)
+
                     def cancel_add():
                         edit_name_window.destroy()
                     cancel_button = Button(edit_name_window, text="Cancel", command=cancel_add,borderwidth=3, bg="#D00050", fg="white", font=("VNI-Vari", 12, "bold"))
@@ -546,7 +553,7 @@ class CustomerOperation:
                             return messagebox.showerror("Error", "Customer's name can't have number.")
                         edit_name_results = c.execute("UPDATE customers SET name=? WHERE id=?", (new_name,customer_id)).rowcount
                         if edit_name_results > 0:
-                            messagebox.showinfo("Success", f"You have change {name} into {new_name}!")
+                            messagebox.showinfo("Success", f"You have changed {name} into {new_name}!")
                             conn.commit()
                             edit_name_window.destroy()
                 
@@ -629,6 +636,7 @@ class CustomerOperation:
                                 raise messagebox.showerror("Add Error", "Phone number must be a positive number.")
                         if len(new_phone_num) not in {10, 8}:
                                 raise messagebox.showerror("Add Error", "Phone number must have 10 numbers.")
+                        ############################################################################################
                             
                         edit_phone_num_results = c.execute("UPDATE customers SET phonenum=? WHERE id=?", (new_phone_num,customer_id)).rowcount
                         if edit_phone_num_results > 0:
@@ -667,7 +675,7 @@ class CustomerOperation:
                         font = ("VNI-Vari", 12, "bold"))
                     cancel_button.grid(row=2, column=0,columnspan=1, padx=50, pady=10)
                     
-                    def update_model_brand(new_model,new_brand):
+                    def update_model_brand(new_model,new_brand): ######################################################################################
                         edit_options_window.destroy()
                         if not new_model and not new_brand:
                             messagebox.showerror("Error", "Please enter a valid model and brand.")
@@ -680,7 +688,7 @@ class CustomerOperation:
                             return
                         search_model_brand_results = list(c.execute("SELECT * FROM phones WHERE model=? and brand=?", (new_model,new_brand)))
                         if search_model_brand_results:
-                            edit_model_brand_results = c.execute("UPDATE customers SET phonemodelsold=? AND phonebrandsold=? WHERE id=?", (new_model,new_brand,customer_id)).rowcount
+                            edit_model_brand_results = c.execute("UPDATE customers SET phonemodelsold=? AND phonebrandsold=? WHERE namew=?", (new_model,new_brand,customer_id)).rowcount
                             if edit_model_brand_results > 0:
                                 messagebox.showinfo("Success", f"You have change model and brand name into {new_brand} {new_model}!")
                                 conn.commit()
@@ -695,7 +703,7 @@ class CustomerOperation:
                 edit_options_window.title("Edit Options")
                 edit_options_window.configure(bg="#FFCAD4")
                 edit_options_window.grid_columnconfigure((0,2), weight=1)
-                # edit_options_window.grid_rowconfigure((0, 11), weight=1)
+                edit_options_window.grid_rowconfigure((0, 11), weight=1)
 
                 edit_name = Button(
                     edit_options_window, 
@@ -823,6 +831,8 @@ class CustomerOperation:
 
         # Create a new Treeview widget in the new window with the   custom style
         customers_list = ttk.Treeview(table_customer_window, style="Custom.Treeview", columns=("id", "name", "phonenum", "phonebrandsold", "phonemodelsold"))
+        customers_list.column("#0", width = 0, stretch=NO)
+        customers_list.heading("#0", text='', anchor=W)
         customers_list.heading("id", text="Customer ID")
         customers_list.heading("name", text="Customer Name")
         customers_list.heading("phonenum", text="Phone Number")
