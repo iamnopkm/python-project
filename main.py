@@ -11,7 +11,7 @@ from OperationUI.Colors import *
 if __name__ == "__main__":
 # Create the main window:
     root.geometry("1440x826")
-    app_label = Label(root, text= "Mobile phone shop management app", background="#FFCAD4", font=("Comic Sans MS", 26, "bold"))
+    app_label = Label(root, text= "FUIYOOHAYA mobile phone shop mangament", background="#FFCAD4", font=("Comic Sans MS", 26, "bold"))
     app_label.grid(row=0, column=1, padx=10, pady=20)
     root.config(background="#FFCAD4")
     root.grid_columnconfigure((0,2), weight=1)
